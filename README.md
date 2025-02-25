@@ -30,6 +30,11 @@ Cada pasta dentro deste repositório contém um projeto independente. Abaixo est
    - Tecnologias principais: HTML, CSS, JavaScript (jQuery)
    - Funcionalidade: [O que o projeto faz]
 
+3. **Projeto 3: mercearia**
+   - Este sistema foi desenvolvido para automatizar o registro de vendas e o controle de estoque de uma mercearia, reduzindo erros manuais e melhorando a organização. Ele permite a autenticação de usuários com diferentes níveis de acesso, gestão de produtos, e gera relatórios para facilitar a tomada de decisão.
+   - Tecnologias principais: HTML, CSS, JavaScript (jQuery)
+   - Funcionalidade: Sistema de Gerenciamento de Venda
+
 ## Como Rodar os Projetos
 
 ### 1. Pré-requisitos
