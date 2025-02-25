@@ -20,11 +20,11 @@ Este repositório contém todos os códigos que fiz de prática ao longo da minh
 
 Cada pasta dentro deste repositório contém um projeto independente. Abaixo está uma lista geral dos projetos e suas funcionalidades principais:
 
-1. **Projeto 1: [Nome do Projeto]**
+1. **Projeto 1: sistema_agendamento**
    - Descrição do projeto
    - Tecnologias principais: HTML, CSS, JavaScript (jQuery), Ajax, PHP e MySQL
 
-2. **Projeto 2: [Nome do Projeto]**
+2. **Projeto 2: sistema_gerenciamento**
    - Descrição do projeto
    - Tecnologias principais: HTML, CSS, JavaScript (jQuery)
 
