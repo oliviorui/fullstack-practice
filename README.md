@@ -22,11 +22,11 @@ Cada pasta dentro deste repositório contém um projeto independente. Abaixo est
 
 1. **Projeto 1: sistema_agendamento**
    - Descrição do projeto
-   - Tecnologias principais: HTML, CSS, JavaScript (jQuery), Ajax, PHP e MySQL
+   - Tecnologias principais: HTML, CSS, JavaScript (jQuery), PHP e MySQL
 
 2. **Projeto 2: sistema_gerenciamento**
    - Descrição do projeto
-   - Tecnologias principais: HTML, CSS, JavaScript (jQuery)
+   - Tecnologias principais: HTML, CSS, JavaScript (jQuery e jQuery Validade), Ajax, PHP e MySQL
 
 3. **Projeto 3: mercearia**
    - Este sistema foi desenvolvido para automatizar o registro de vendas e o controle de estoque de uma mercearia, reduzindo erros manuais e melhorando a organização. Ele permite a autenticação de usuários com diferentes níveis de acesso, gestão de produtos, e gera relatórios para facilitar a tomada de decisão.
