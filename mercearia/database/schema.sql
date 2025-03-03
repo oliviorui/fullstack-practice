@@ -1,73 +1,74 @@
-create database sistema_vendas;
+CREATE DATABASE sistema_vendas;
 
-use sistema_vendas;
+USE sistema_vendas;
 
-create table usuarios (
-    id_usuario int auto_increment,
-    nome varchar(50),
-    email varchar(50) unique,
-    senha varchar(255),
-    tipo_usuario enum('admin', 'operador') default 'operador',
-    data_cadastro datetime,
-
-    primary key (id_usuario)
+-- Tabela de usuários
+CREATE TABLE usuarios (
+    id_usuario INT AUTO_INCREMENT,
+    nome VARCHAR(50),
+    email VARCHAR(50) UNIQUE,
+    senha VARCHAR(255),
+    tipo_usuario ENUM('admin', 'operador') DEFAULT 'operador',
+    data_cadastro DATETIME,
+    PRIMARY KEY (id_usuario)
 );
 
+-- Tabela de sessões
 CREATE TABLE sessoes (
     id_sessao INT AUTO_INCREMENT,
     id_usuario INT NOT NULL,
     token VARCHAR(255) UNIQUE NOT NULL,
     data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
     data_expiracao DATETIME,
-    estado enum('ativa', 'desativada'),
-    
+    estado ENUM('ativa', 'desativada'),
     PRIMARY KEY (id_sessao),
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
 );
 
-create table vendas (
-    id_venda int auto_increment,
-    id_usuario int,
-    data_venda datetime,
-    valor_total decimal(8, 2),
-    
-    primary key (id_venda),
-    foreign key (id_usuario) references usuarios(id_usuario)
+-- Tabela de vendas
+CREATE TABLE vendas (
+    id_venda INT AUTO_INCREMENT,
+    id_usuario INT,
+    data_venda DATETIME,
+    valor_total DECIMAL(8, 2),
+    PRIMARY KEY (id_venda),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
 );
 
-create table logs (
-    id_log int auto_increment,
-    id_usuario int,
-    data_hora datetime,
-    tipo_actividade varchar(30),
-    descricao text,
-    
-    primary key (id_log),
-    foreign key (id_usuario) references usuarios(id_usuario)
+-- Tabela de logs
+CREATE TABLE logs (
+    id_log INT AUTO_INCREMENT,
+    id_usuario INT,
+    data_hora DATETIME,
+    tipo_actividade VARCHAR(30),
+    descricao TEXT,
+    PRIMARY KEY (id_log),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
 );
 
-create table produtos (
-    id_produto int auto_increment,
-    nome varchar(30),
-    categoria varchar(20),
-    preco decimal(6, 2),
-    quantidade_estoque int,
-    descricao text,
-    
-    primary key (id_produto)
+-- Tabela de produtos
+CREATE TABLE produtos (
+    id_produto INT AUTO_INCREMENT,
+    nome VARCHAR(30),
+    categoria VARCHAR(20),
+    preco DECIMAL(6, 2),
+    quantidade_estoque INT,
+    descricao TEXT,
+    PRIMARY KEY (id_produto)
 );
 
-create table itens_venda (
-    id_item int auto_increment,
-    id_venda int,
-    id_produto int,
-    quantidade int,
-    preco_unitario decimal(6, 2),
-    
-    primary key (id_item),
-    foreign key (id_venda) references vendas(id_venda),
-    foreign key (id_produto) references produtos(id_produto)
+-- Tabela de itens da venda
+CREATE TABLE itens_venda (
+    id_item INT AUTO_INCREMENT,
+    id_venda INT,
+    id_produto INT,
+    quantidade INT,
+    preco_unitario DECIMAL(6, 2),
+    PRIMARY KEY (id_item),
+    FOREIGN KEY (id_venda) REFERENCES vendas(id_venda) ON DELETE CASCADE,
+    FOREIGN KEY (id_produto) REFERENCES produtos(id_produto) ON DELETE CASCADE
 );
+
 
 
 INSERT INTO produtos (nome, categoria, preco, quantidade_estoque, descricao) VALUES
@@ -153,6 +154,3 @@ INSERT INTO produtos (nome, categoria, preco, quantidade_estoque, descricao) VAL
 ('Papel Higiênico', 'Produtos de Higiene', 45.00, 300, 'Fofinho 12 rolos'),
 ('Desodorante', 'Produtos de Higiene', 180.00, 250, 'Nivea 50ml'),
 ('Desodorante Aerosol', 'Produtos de Higiene', 900.00, 250, 'Rexona 150ml');
-
-
-drop database sistema_vendas;
