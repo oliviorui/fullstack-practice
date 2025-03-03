@@ -54,12 +54,14 @@ Este sistema foi desenvolvido para automatizar o registro de vendas e o controle
 - O sistema gera relatórios visuais de vendas e estoque.
 
 ## 📂 Estrutura do Projeto
-- **app/api/** → Endpoints REST para interação com o banco
-- **app/config/** → Arquivos de configuração e autenticação
-- **app/controller/** → Lógica dos CRUDs (usuários e produtos)
-- **app/views/** → Páginas do sistema
-- **database/** → Script SQL para estrutura da base de dados
-- **public/** → Arquivos acessíveis pelo navegador (HTML, CSS, JS)
+- **app/api/** → Endpoints REST para interação com a base de dados, responsáveis por ações como cadastro de vendas, de usuários, etc.
+- **app/config/** → Arquivos de configuração do sistema, como as configurações de base de dados e autenticação de usuários.
+- **app/controller/** → Contém a lógica para as operações de CRUD, como gerenciamento de usuários, produtos e vendas.
+- **app/views/** → Páginas do sistema (HTML, CSS, JS) que são acessadas pelos usuários no navegador.
+- **init/** → Ficheiro responsável pela inserção do usuário admin à base de dados.
+- **database/** → Scripts SQL para a criação das tabelas na base de dados e dados de exemplo.
+- **public/** → Arquivos públicos acessíveis pelo navegador, como arquivos estáticos (CSS, JS).
+
 
 ## 🗃️ Banco de Dados
 ### 📌 Tabelas principais
