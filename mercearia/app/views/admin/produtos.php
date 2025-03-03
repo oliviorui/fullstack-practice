@@ -41,7 +41,7 @@
     <div class="sidebar">
         <div class="perfil">
             <img src="../../../public/assets/images/admin.png" alt="Admin">
-            <p>NOME</p>
+            <p><?php echo $_SESSION['usuario']['nome']; ?></p>
         </div>
         <hr>
         <nav>

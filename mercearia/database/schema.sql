@@ -50,7 +50,7 @@ CREATE TABLE logs (
 CREATE TABLE produtos (
     id_produto INT AUTO_INCREMENT,
     nome VARCHAR(30),
-    categoria VARCHAR(20),
+    categoria VARCHAR(30),
     preco DECIMAL(6, 2),
     quantidade_estoque INT,
     descricao TEXT,
@@ -68,8 +68,6 @@ CREATE TABLE itens_venda (
     FOREIGN KEY (id_venda) REFERENCES vendas(id_venda) ON DELETE CASCADE,
     FOREIGN KEY (id_produto) REFERENCES produtos(id_produto) ON DELETE CASCADE
 );
-
-
 
 INSERT INTO produtos (nome, categoria, preco, quantidade_estoque, descricao) VALUES
 -- Alimentos básicos
