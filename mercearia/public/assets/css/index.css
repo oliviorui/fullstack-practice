@@ -1,11 +1,9 @@
-/* Reset de estilo */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Corpo da Página */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -14,10 +12,15 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Cabeçalho */
 header {
     background: #0c6298;
     padding: 20px 0;
+}
+
+header div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .container {
@@ -60,7 +63,6 @@ nav a:hover {
     background-color: #e5533c;
 }
 
-/* Seções */
 section {
     padding: 50px 0;
 }
@@ -101,7 +103,6 @@ h1, h2, h3 {
     color: #555;
 }
 
-/* Footer */
 footer {
     background: #0c6298;
     color: white;
@@ -110,6 +111,13 @@ footer {
 }
 
 /* Media Queries para Responsividade */
+@media (max-width: 450px) {
+    header div {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
 @media (max-width: 768px) {
     nav {
         text-align: center;

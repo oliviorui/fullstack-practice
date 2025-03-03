@@ -12,7 +12,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividades no Sistema</title>
+    
+    <title>Banca Mahumane - Actividades no Sistema</title>
+    <link rel="icon" href="../../../public/assets/images/favicon.png" type="image/x-icon">
+
     <link rel="stylesheet" href="../../../public/assets/css/geral.css">
     <link rel="stylesheet" href="../../../public/assets/css/footer-admin.css">
     <link rel="stylesheet" href="../../../public/assets/css/tabela.css">

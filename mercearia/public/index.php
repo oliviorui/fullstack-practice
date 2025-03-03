@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-pt">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercearia Mahumane - Sistema de Gerenciamento de Vendas</title>
+
+    <title>Banca Mahumane - Sistema de Gerenciamento de Vendas</title>
+    <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/index.css">
-    <link rel="icon" href="assets/logo.png" type="image/x-icon">
 </head>
 
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <img src="assets/logo.png" alt="Logo da Mercearia Mahumane">
+                <img src="assets/images/logo.png" alt="Logo da Mercearia Mahumane">
             </div>
             <nav>
                 <a href="#sobre">Sobre o Sistema</a>

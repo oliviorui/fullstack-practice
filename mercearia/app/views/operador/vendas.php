@@ -12,7 +12,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Vendas</title>
+
+    <title>Banca Mahumane - Painel Vendas</title>
+    <link rel="icon" href="../../../public/assets/images/favicon.png" type="image/x-icon">
+    
     <link rel="stylesheet" href="../../../public/assets/css/geral.css">
     <link rel="stylesheet" href="../../../public/assets/css/footer-vendedor.css">
     <link rel="stylesheet" href="../../../public/assets/css/vendas.css">
@@ -132,7 +135,7 @@
                 });
             }
 
-            carregarProdutos(); // Carrega os produtos na inicialização
+            carregarProdutos();
 
             // Quando um produto for selecionado, preenche o campo de preço automaticamente
             $(document).on('change', '.produto', function() {
@@ -162,7 +165,6 @@
                 }
             });
         });
-
     </script>
 </body>
 </html>
