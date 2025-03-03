@@ -13,7 +13,7 @@ Este repositório contém todos os códigos que fiz de prática ao longo da minh
 - **Backend**:
   - PHP
 
-- **Banco de Dados**:
+- **Base de Dados**:
   - MySQL
 
 ## Descrição dos Projetos
@@ -48,7 +48,7 @@ Cada pasta dentro deste repositório contém um projeto independente. Abaixo est
 
 2. Coloque os arquivos dentro do diretório do seu servidor local (ex: `htdocs` no XAMPP).
 
-3. Crie o banco de dados no MySQL e configure as credenciais no arquivo de configuração do PHP.
+3. Crie o base de dados no MySQL e configure as credenciais no arquivo de configuração do PHP.
 
 4. Acesse o projeto via navegador, indo para `localhost/nome_do_projeto`.
 

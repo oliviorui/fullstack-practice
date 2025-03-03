@@ -14,8 +14,8 @@ Este sistema foi desenvolvido para automatizar o registro de vendas e o controle
 
 ## 🛠 Tecnologias Utilizadas
 - **Frontend:** HTML, CSS, JavaScript (jQuery, jQuery Validate)
-- **Backend:** PHP (com PDO para conexão segura ao banco de dados)
-- **Banco de Dados:** MySQL
+- **Backend:** PHP (com PDO para conexão segura à base de dados)
+- **Base de Dados:** MySQL
 - **Servidor:** XAMPP (Apache, MySQL, PHP)
 
 ## 📥 Instalação e Configuração
@@ -27,19 +27,17 @@ Este sistema foi desenvolvido para automatizar o registro de vendas e o controle
 ### 2️⃣ Passos
 1. Clone o repositório:
    ```sh
-   git clone https://github.com/oliviorui/mercearia.git
+   git clone https://github.com/oliviorui/fullstack-practice.git
    ```
-2. Configure o banco de dados:
+2. Coloque o diretório *mercearia* dentro do diretório do seu servidor local (ex: `htdocs` no XAMPP).
+3. Crie e configure a base de dados:
    - Importe o arquivo `database/schema.sql` no MySQL.
-   - Atualize as credenciais do banco no arquivo `app/config/database.php`.
-3. Inicie o servidor:
+   - Atualize as credenciais da banco no arquivo `tests/add_admin.php`.
+4. Inicie o servidor:
    ```sh
    php -S localhost:8000 -t public
    ```
-4. Acesse no navegador:
-   ```sh
-   http://localhost:8000
-   ```
+5. Acesse o projeto via navegador, indo para `localhost/mercearia/public`.
 
 ## 📌 Uso do Sistema
 ### 🔑 Login
@@ -62,9 +60,9 @@ Este sistema foi desenvolvido para automatizar o registro de vendas e o controle
 ## 📂 Estrutura do Projeto
 - **app/api/** → Endpoints REST para interação com o banco
 - **app/config/** → Arquivos de configuração e autenticação
-- **app/controller/** → Lógica dos CRUDs (usuários, produtos, vendas)
+- **app/controller/** → Lógica dos CRUDs (usuários e produtos)
 - **app/views/** → Páginas do sistema
-- **database/** → Script SQL para estrutura do banco
+- **database/** → Script SQL para estrutura da base de dados
 - **public/** → Arquivos acessíveis pelo navegador (HTML, CSS, JS)
 
 ## 🗃️ Banco de Dados
@@ -82,4 +80,3 @@ Sugestões e melhorias são bem-vindas! Abra um pull request ou envie uma mensag
 ## 📞 Contato
 - Autor: **Olívio Rui Cumbe**
 - Email: [oliviorui@gmail.com](mailto:oliviorui@gmail.com)
-
