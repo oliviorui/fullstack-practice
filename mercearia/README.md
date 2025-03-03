@@ -30,14 +30,10 @@ Este sistema foi desenvolvido para automatizar o registro de vendas e o controle
    git clone https://github.com/oliviorui/fullstack-practice.git
    ```
 2. Coloque o diretório *mercearia* dentro do diretório do seu servidor local (ex: `htdocs` no XAMPP).
-3. Crie e configure a base de dados:
+3. Inicie o servidor, crie e configure a base de dados:
    - Importe o arquivo `database/schema.sql` no MySQL.
-   - Atualize as credenciais da banco no arquivo `tests/add_admin.php`.
-4. Inicie o servidor:
-   ```sh
-   php -S localhost:8000 -t public
-   ```
-5. Acesse o projeto via navegador, indo para `localhost/mercearia/public`.
+   - Atualize as credenciais da banco no arquivo `init/add_admin.php`.
+4. Acesse o projeto via navegador, indo para `localhost/mercearia/public`.
 
 ## 📌 Uso do Sistema
 ### 🔑 Login
