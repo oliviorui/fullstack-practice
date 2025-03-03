@@ -68,7 +68,23 @@ class CrudUsuario {
             error_log("Erro ao editar usuário: " . $e->getMessage());
             return false;
         }
-    }    
+    }
+
+    public function excluirUsuario($id) {
+        try {
+            $sql = "DELETE FROM usuarios WHERE id_usuario = ?";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([$id]);
+    
+            // Registrar log de exclusão
+            $this->registrarLog($id, 'Exclusão de usuário', 'Usuário excluído do sistema.');
+            
+            return true;
+        } catch (PDOException $e) {
+            error_log("Erro ao excluir usuário: " . $e->getMessage());
+            return false;
+        }
+    }       
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -83,6 +99,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } elseif ($acao == 'editar') {
             $senha = !empty($_POST['senha']) ? $_POST['senha'] : null;
             $crud->editarUsuario($_POST['id_usuario'], $_POST['nome'], $_POST['email'], $_POST['tipo_usuario'], $senha);
+            header("Location: ../views/admin/usuarios.php");
+        } elseif ($acao == 'excluir') {
+            $crud->excluirUsuario($_POST['id_usuario']);
             header("Location: ../views/admin/usuarios.php");
         }
     }

@@ -148,6 +148,7 @@
                                     '<li>' + usuario.tipo_usuario + '</li>' +
                                     '<li>' +
                                         '<input type="image" src="../../../public/assets/images/icons/edit_24dp.svg" class="editar" data-id="' + usuario.id_usuario + '" data-nome="' + usuario.nome + '" data-email="' + usuario.email + '" data-tipo="' + usuario.tipo_usuario +'">' +
+                                        '<input type="image" src="../../../public/assets/images/icons/delete_24dp.svg" class="excluir" data-id="' + usuario.id_usuario + '">' +
                                     '</li>' +
                                 '</ul>'
                             );
@@ -170,6 +171,22 @@
 
                 $('#form-edicao').show();
                 $('#desaparece').hide();
+            });
+
+            $(document).on('click', '.excluir', function() {
+                var idUsuario = $(this).data('id');
+                
+                if (confirm("Tem certeza de que deseja excluir este usuário?")) {
+                    $.ajax({
+                        url: '../../controller/crud_usuario.php',
+                        method: 'POST',
+                        data: { acao: 'excluir', id_usuario: idUsuario },
+                        success: function(response) {
+                            alert("Usuario excluido com sucesso!");
+                            carregarUsuarios();
+                        }
+                    });
+                }
             });
         });
     </script>
