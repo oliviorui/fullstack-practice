@@ -46,8 +46,8 @@ $usuario_nome = $_SESSION['usuario_nome'] ?? 'Usuário desconhecido'; // Definin
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Admin - Sistema Acadêmico</title>
-    <link rel="stylesheet" href="../../css/estilo.css">
+    <title>Painel - Sistema Acadêmico</title>
+    <link rel="stylesheet" href="../../css/app.css">
     <script src="../../js/jquery.js"></script>
     <script src="../../js/chart.js"></script>
     <script src="../../js/validate.js"></script>
@@ -66,69 +66,103 @@ $usuario_nome = $_SESSION['usuario_nome'] ?? 'Usuário desconhecido'; // Definin
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <nav>
-            <a href="dashboard.php">Página Inicial</a>
-            <a href="logs.php">Atividades no sistema</a>
-        </nav>
-        
-        <form action="../../controllers/logout.php" method="POST">
-            <input type="hidden" name="acao" value="logout">
-            <input type="submit" value="Sair" id="btnSair">
-        </form>
-    </div>
-    
-    <div class="container">
-        <h1>Bem-vindo(a), <span id="usuarioNome"><?= $usuario_nome ?></span>!</h1>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand">
+                <img src="../../img/logo.png" alt="Logo">
+                <strong>Sistema Acadêmico</strong>
+            </div>
 
-        <h2>Pesquisar Notas</h2>
-        <label for="searchTerm">Buscar:</label>
-        <input type="text" id="searchTerm" name="search" placeholder="Digite o nome da disciplina ou nota obtida">
+            <nav class="nav">
+                <a href="dashboard.php">Página Inicial</a>
+                <a href="logs.php">Atividades no sistema</a>
+            </nav>
 
-        <h2 class="metade">Registar Nota</h2>
-        <form action="../../controllers/adiciona_nota.php" method="POST" id="novaNota">
-            <label for="disciplina">Disciplina:</label>
-            <select name="disciplina" id="disciplina">
-                <option value="">Selecione uma disciplina</option>
-                <?php foreach ($disciplinas as $disciplina): ?>
-                    <option value="<?= $disciplina['id_disciplina'] ?>"><?= $disciplina['nome'] ?></option>
-                <?php endforeach; ?>
-            </select>
-            
-            <label for="nota">Nota:</label>
-            <input type="number" id="nota" name="nota" step="0.01">
-            
-            <label for="tipo_avaliacao">Tipo de Avaliação:</label>
-            <select id="tipo_avaliacao" name="tipo_avaliacao">
-                <option value="Prova">Prova</option>
-                <option value="Trabalho">Trabalho</option>
-                <option value="Exame">Exame</option>
-            </select>
-            
-            <button type="submit">Adicionar Nota</button>
-        </form>
+            <div class="divider"></div>
 
-        <h2 class="metade" id="right">Gráfico de desempenho</h2>
-        <canvas id="graficoDesempenho"></canvas>
+            <form action="../../controllers/logout.php" method="POST">
+                <input type="hidden" name="acao" value="logout">
+                <button class="btn btn-danger logout" type="submit">Sair</button>
+            </form>
+        </aside>
 
-        <!-- Exibição das notas -->
-        <h2>Suas Notas</h2>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Disciplina</th>
-                    <th>Nota</th>
-                    <th>Data</th>
-                    <th>Tipo</th>
-                    <th>Desempenho</th>
-                </tr>
-            </thead>
-            <tbody id="tabelaNotas">
-                <tr>
-                    <td colspan="3" style="text-align:center;">Carregando...</td>
-                </tr>
-            </tbody>
-        </table>
+        <header class="topbar">
+            <h1>Painel</h1>
+            <div class="actions">
+                <span class="muted">Bem-vindo(a), <strong id="usuarioNome"><?= $usuario_nome ?></strong></span>
+            </div>
+        </header>
+
+        <main class="main">
+            <h2 class="page-title">Notas & Desempenho</h2>
+
+            <div class="helper-row">
+                <div class="field" style="min-width: 260px; max-width: 420px; margin: 0;">
+                    <label for="searchTerm">Pesquisar notas</label>
+                    <input type="text" id="searchTerm" name="search" placeholder="Digite a disciplina ou a nota">
+                </div>
+            </div>
+
+            <section class="grid-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 style="margin: 0 0 12px;">Registar Nota</h3>
+                        <form action="../../controllers/adiciona_nota.php" method="POST" id="novaNota">
+                            <div class="field">
+                                <label for="disciplina">Disciplina</label>
+                                <select name="disciplina" id="disciplina">
+                                    <option value="">Selecione uma disciplina</option>
+                                    <?php foreach ($disciplinas as $disciplina): ?>
+                                        <option value="<?= $disciplina['id_disciplina'] ?>"><?= $disciplina['nome'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="nota">Nota</label>
+                                <input type="number" id="nota" name="nota" step="0.01">
+                            </div>
+
+                            <div class="field">
+                                <label for="tipo_avaliacao">Tipo de Avaliação</label>
+                                <select id="tipo_avaliacao" name="tipo_avaliacao">
+                                    <option value="Prova">Prova</option>
+                                    <option value="Trabalho">Trabalho</option>
+                                    <option value="Exame">Exame</option>
+                                </select>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">Adicionar Nota</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3 style="margin: 0 0 12px;">Gráfico de desempenho</h3>
+                        <canvas id="graficoDesempenho" style="width: 100%; max-height: 360px;"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <h3 class="subtitle">Suas Notas</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Disciplina</th>
+                        <th>Nota</th>
+                        <th>Data</th>
+                        <th>Tipo</th>
+                        <th>Desempenho</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaNotas">
+                    <tr>
+                        <td colspan="5" style="text-align:center;">Carregando...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
     </div>
 
     <script>
@@ -172,11 +206,11 @@ $usuario_nome = $_SESSION['usuario_nome'] ?? 'Usuário desconhecido'; // Definin
                                 );
                             });
                         } else {
-                            tabelaNotas.append('<tr><td colspan="4">Nenhuma atividade registrada.</td></tr>');
+                            tabelaNotas.append('<tr><td colspan="5">Nenhuma atividade registrada.</td></tr>');
                         }
                     },
                     error: function () {
-                        $("#tabelaNotas").html('<tr><td colspan="4">Erro ao carregar os logs.</td></tr>');
+                        $("#tabelaNotas").html('<tr><td colspan="5">Erro ao carregar os dados.</td></tr>');
                     }
                 });
             }

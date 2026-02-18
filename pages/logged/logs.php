@@ -12,41 +12,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Admin - Sistema Acadêmico</title>
-    <link rel="stylesheet" href="../../css/estilo.css">
+    <title>Logs - Sistema Acadêmico</title>
+    <link rel="stylesheet" href="../../css/app.css">
     <script src="../../js/jquery.js"></script>
 </head>
 <body>
-    <div class="sidebar">
-        <nav>
-            <a href="dashboard.php">Página Inicial</a>
-            <a href="logs.php">Atividades no sistema</a>
-        </nav>
-        
-        <form action="../../controllers/logout.php" method="POST">
-            <input type="hidden" name="acao" value="logout">
-            <input type="submit" value="Sair" id="btnSair">
-        </form>
-    </div>
-    
-    <div class="container">
-        <h1>Bem-vindo(a), <span id="usuarioNome"></span>!</h1>
-        
-        <h2>Logs de Atividades</h2>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Data e Hora</th>
-                    <th>Descrição</th>
-                    <th>Tipo de Atividade</th>
-                </tr>
-            </thead>
-            <tbody id="tabelaLogs">
-                <tr>
-                    <td colspan="4">Carregando...</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand">
+                <img src="../../img/logo.png" alt="Logo">
+                <strong>Sistema Acadêmico</strong>
+            </div>
+
+            <nav class="nav">
+                <a href="dashboard.php">Página Inicial</a>
+                <a href="logs.php">Atividades no sistema</a>
+            </nav>
+
+            <div class="divider"></div>
+
+            <form action="../../controllers/logout.php" method="POST">
+                <input type="hidden" name="acao" value="logout">
+                <button class="btn btn-danger logout" type="submit">Sair</button>
+            </form>
+        </aside>
+
+        <header class="topbar">
+            <h1>Logs</h1>
+            <div class="actions">
+                <span class="muted">Bem-vindo(a), <strong id="usuarioNome"></strong></span>
+            </div>
+        </header>
+
+        <main class="main">
+            <h2 class="page-title">Atividades no sistema</h2>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Data e Hora</th>
+                        <th>Descrição</th>
+                        <th>Tipo de Atividade</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaLogs">
+                    <tr>
+                        <td colspan="3">Carregando...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
     </div>
 
     <script>
@@ -77,11 +92,11 @@
                             `);
                         });
                     } else {
-                        tabelaLogs.append('<tr><td colspan="4">Nenhuma atividade registrada.</td></tr>');
+                        tabelaLogs.append('<tr><td colspan="3">Nenhuma atividade registrada.</td></tr>');
                     }
                 },
                 error: function() {
-                    $("#tabelaLogs").html('<tr><td colspan="4">Erro ao carregar os logs.</td></tr>');
+                    $("#tabelaLogs").html('<tr><td colspan="3">Erro ao carregar os logs.</td></tr>');
                 }
             });
         });

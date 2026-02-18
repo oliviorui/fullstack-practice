@@ -1,50 +1,65 @@
-create database sistema_academico;
+CREATE DATABASE sistema_academico;
+USE sistema_academico;
 
-use sistema_academico;
+-- =========================
+-- TABELA DE USUÁRIOS
+-- =========================
+CREATE TABLE usuarios (
+    id_usuario INT AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    email VARCHAR(50) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    tipo ENUM('usuario', 'admin') DEFAULT 'usuario',
+    data_cadastro DATE,
 
-create table usuarios (
-    id_usuario int auto_increment,
-    nome varchar(50),
-    email varchar(50) unique,
-    senha varchar(255),
-    data_cadastro date,
-
-    primary key (id_usuario)
+    PRIMARY KEY (id_usuario)
 );
 
-create table disciplinas (
-    id_disciplina int auto_increment,
-    nome varchar(50),
-    codigo varchar(5),
-    descricao text,
+-- =========================
+-- TABELA DE DISCIPLINAS
+-- =========================
+CREATE TABLE disciplinas (
+    id_disciplina INT AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    codigo VARCHAR(5) NOT NULL,
+    descricao TEXT,
     
-    primary key (id_disciplina)
+    PRIMARY KEY (id_disciplina)
 );
 
-create table notas (
-    id_nota int auto_increment,
-    id_usuario int,
-    id_disciplina int,
-    nota decimal(4, 2),
-    data_avaliacao date,
-    tipo_avaliacao enum('Prova', 'Trabalho', 'Exame'),
+-- =========================
+-- TABELA DE NOTAS
+-- =========================
+CREATE TABLE notas (
+    id_nota INT AUTO_INCREMENT,
+    id_usuario INT NOT NULL,
+    id_disciplina INT NOT NULL,
+    nota DECIMAL(4,2),
+    data_avaliacao DATE,
+    tipo_avaliacao ENUM('Prova', 'Trabalho', 'Exame'),
     
-    primary key (id_nota),
-    foreign key (id_usuario) references usuarios(id_usuario),
-    foreign key (id_disciplina) references disciplinas(id_disciplina)
+    PRIMARY KEY (id_nota),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (id_disciplina) REFERENCES disciplinas(id_disciplina) ON DELETE CASCADE
 );
 
-create table logs_atividades (
-    id_log int auto_increment,
-    id_usuario int,
-    data_hora datetime,
-    descricao text,
-    tipo_actividade enum('Login', 'Logout', 'Cadastro', 'Registro'),
+-- =========================
+-- TABELA DE LOGS
+-- =========================
+CREATE TABLE logs_atividades (
+    id_log INT AUTO_INCREMENT,
+    id_usuario INT,
+    data_hora DATETIME,
+    descricao TEXT,
+    tipo_actividade ENUM('Login', 'Logout', 'Cadastro', 'Registro', 'Admin'),
 
-    primary key (id_log),
-    foreign key (id_usuario) references usuarios(id_usuario)
+    PRIMARY KEY (id_log),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE SET NULL
 );
 
+-- =========================
+-- DISCIPLINAS PADRÃO
+-- =========================
 INSERT INTO disciplinas (nome, codigo, descricao) VALUES
 ('Algoritmos e Estruturas de Dados', 'AED01', 'Estudo de algoritmos, estruturas de dados e complexidade computacional.'),
 ('Base de Dados', 'BD02', 'Modelagem, normalização e implementação de bancos de dados relacionais.'),
@@ -57,5 +72,11 @@ INSERT INTO disciplinas (nome, codigo, descricao) VALUES
 ('Ética e Legislação em TI', 'EL13', 'Aspectos éticos e legais relacionados ao uso da tecnologia da informação.'),
 ('Gestão de Projetos de TI', 'GP14', 'Metodologias para planejamento, execução e monitoramento de projetos de tecnologia.');
 
+-- =========================
+-- USUÁRIO ADMIN PADRÃO
+-- senha: admin123  (já criptografada)
+-- =========================
+INSERT INTO usuarios (nome, email, senha, tipo, data_cadastro) VALUES
+('Administrador', 'admin@sistema.com', '$2y$10$TwQm5ZRkaoA8Z7Q3NMMb/u/8tGN4nHylBTdgrRUc/UO8.UFHe5StK', 'admin', CURDATE());
 
-drop database sistema_academico;
+DROP DATABASE sistema_academico;
